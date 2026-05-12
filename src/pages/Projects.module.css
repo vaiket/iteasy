@@ -1,0 +1,47 @@
+.projectsPage {
+  min-height: 100vh;
+  background: #f8f8f5;
+}
+
+.projectsHero {
+  text-align: center;
+  padding: 120px 24px 64px;
+}
+
+.projectsHero h1 {
+  font-size: clamp(40px, 7vw, 72px);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.projectsHero p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.projectsGridFull {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .projectsGridFull {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .projectsGridFull {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCardFull .projectCardImg {
+  height: 240px;
+}

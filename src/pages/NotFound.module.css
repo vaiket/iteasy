@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════
+   404 PAGE — CENTERED COLUMN LAYOUT
+═══════════════════════════════════ */
+
+.notFoundContainer {
+  min-height: 100vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3rem);
+  max-width: 1200px;
+  width: 100%;
+  text-align: left;
+}
+
+/* ── GIF/VIDEO — responsive ── */
+.errorGif {
+  width: 45vw;
+  max-width: 45vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* ── TEXT ── */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+  width: 100%;
+  max-width: 550px;
+}
+
+.title {
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #111;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 340px;
+}
+
+.homeButton {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.65rem 1rem;
+  background: black;
+  color: #fff;
+  border-radius: 50px;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+.homeButton:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* ── MOBILE LAYOUT (≤ 768px) ── */
+@media (max-width: 768px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  .textContent {
+    align-items: center;
+    max-width: 100%;
+  }
+}
+
+/* ── SMALL MOBILE (≤ 380px) ── */
+@media (max-width: 380px) {
+  .errorGif { 
+    width: 100vw;
+    max-width: 100vw;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.78rem;
+  }
+
+  .homeButton {
+    width: 100%;
+    max-width: 180px;
+    text-align: center;
+    padding: 0.65rem 1.2rem;
+  }
+}
+
+/* ── NORMAL MOBILE (381px – 480px) ── */
+@media (min-width: 381px) and (max-width: 480px) {
+  .errorGif { 
+    width: 100vw;
+    max-width: 100vw;
+  }
+  
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .homeButton {
+    max-width: 200px;
+  }
+}
+
+/* ── TABLET (481px – 768px) ── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .errorGif { 
+    width: 95vw;
+    max-width: 95vw;
+  }
+}
+
+/* ── LARGE DESKTOP (≥ 1200px) ── */
+@media (min-width: 1200px) {
+  .errorGif { 
+    width: 65vw;
+    max-width: 65vw;
+  }
+}

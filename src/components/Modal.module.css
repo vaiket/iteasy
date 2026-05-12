@@ -1,0 +1,238 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modalOverlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modalBox {
+  background: var(--card-bg);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modalOverlay.open .modalBox {
+  transform: scale(1);
+}
+
+.modalHeader {
+  background: linear-gradient(135deg, var(--primary), var(--pink));
+  padding: clamp(1.25rem, 4vw, 1.75rem) clamp(1.25rem, 5vw, 2rem);
+  border-radius: 28px 28px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalHeader h2 {
+  color: #fff;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  margin: 0;
+}
+
+.modalHeader p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.modalClose {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modalClose:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.modalBody {
+  padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+/* ── Success state ── */
+.modalSuccess {
+  text-align: center;
+  padding: clamp(1.5rem, 6vw, 3rem) clamp(0.75rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.successIcon {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  line-height: 1;
+}
+
+.modalSuccess h3 {
+  font-size: clamp(0.95rem, 3.5vw, 1.4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 clamp(0.3rem, 1.5vw, 0.5rem);
+  word-break: break-word;
+  max-width: 100%;
+  line-height: 1.3;
+}
+
+.modalSuccess p {
+  color: var(--text-secondary);
+  font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-word;
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+/* ── Form layout ── */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.formInput {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-color);
+  background: var(--gray-50);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .formInput {
+  background: #1A1A1A;
+}
+
+.formInput:focus {
+  border-color: var(--primary);
+}
+
+textarea.formInput {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ── Submit button ── */
+.formSubmit {
+  width: 100%;
+  margin-top: 8px;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 0.875rem) clamp(1.5rem, 5vw, 2rem);
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--pink));
+  color: #fff;
+  font-size: clamp(0.85rem, 3vw, 0.9375rem);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.formSubmit:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Error message ── */
+.errorMsg {
+  margin-top: 10px;
+  padding: clamp(0.625rem, 3vw, 0.75rem) clamp(0.75rem, 4vw, 1rem);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-size: clamp(0.8rem, 3vw, 0.875rem);
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+  animation: slideInUp 0.3s ease-out;
+  word-break: break-word;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 37.5rem) {
+  .modalBox {
+    width: 90vw;
+    max-width: 90vw;
+    border-radius: 20px;
+  }
+
+  .modalHeader {
+    border-radius: 20px 20px 0 0;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .modalSuccess {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .modalSuccess p {
+    padding: 0 0.25rem;
+    font-size: 0.85rem;
+  }
+}

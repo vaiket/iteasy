@@ -1,0 +1,149 @@
+.footer {
+  background: #F2EFF8;
+  color: #111;
+  padding: 72px 24px 32px;
+}
+
+[data-theme="dark"] .footer {
+  background: #F2EFF8;
+}
+
+.footerInner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 900px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footerBrand h3 {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 14px;
+}
+
+.footerBrand p {
+  font-size: 14px;
+  color: #4B5563;
+  line-height: 1.7;
+  max-width: 280px;
+  margin-bottom: 24px;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 8px;
+}
+
+.newsletterInput {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid #D1D5DB;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+  outline: none;
+}
+
+.newsletterInput:focus {
+  border-color: var(--primary);
+}
+
+.newsletterBtn {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.newsletterBtn:hover {
+  opacity: 0.85;
+}
+
+.footerCol h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 10px;
+}
+
+.footerLinks a {
+  font-size: 14px;
+  color: #4B5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.footerLinks a:hover {
+  color: var(--primary);
+}
+
+.footerLinks button {
+  background: none;
+  border: none;
+  color: #4B5563;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.footerLinks button:hover {
+  color: var(--primary);
+}
+
+.footerBottom {
+  border-top: 1px solid #D1D5DB;
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footerBottom p {
+  font-size: 13px;
+  color: #4B5563;
+  margin: 0;
+}

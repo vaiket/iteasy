@@ -1,0 +1,206 @@
+.plansSection {
+  background: #F2EFF8;
+  min-height: 100vh;
+  padding: 100px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.plansSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  background: linear-gradient(to top, #F2EFF8 60%, transparent);
+  opacity: 1;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.plansSection.revealed::after {
+  opacity: 0;
+}
+
+.plansInner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.plansHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .plansGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+.planCard {
+  background: var(--card-bg);
+  border-radius: 28px;
+  padding: 36px;
+  border: 2px solid var(--border-color);
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.planCard.popular {
+  border-color: var(--primary);
+  background: linear-gradient(145deg, #7C3AED08, #EC489908);
+  transform: scale(1.04);
+}
+
+[data-theme="dark"] .planCard.popular {
+  background: linear-gradient(145deg, #7C3AED20, #EC489920);
+}
+
+.planCard:hover:not(.popular) {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.planCard.popular:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--primary), var(--pink));
+  color: #fff;
+  padding: 4px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.planIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.planName {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.planPrice {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.planPeriod {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.planDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.planDivider {
+  height: 1px;
+  background: var(--border-color);
+  margin-bottom: 24px;
+}
+
+.planFeatures {
+  list-style: none;
+  flex: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.planFeatures li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.5;
+  text-indent: 0;
+  padding-left: 0;
+}
+
+.planFeatures li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  width: 16px;
+  text-align: left;
+}
+
+.planCta {
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.planCtaOutline {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.planCtaOutline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.planCtaSolid {
+  background: linear-gradient(135deg, var(--primary), var(--pink));
+  color: #fff;
+  border: none;
+}
+
+.planCtaSolid:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}

@@ -1,0 +1,392 @@
+/* ═══════════════════════════════════════
+   NAVBAR — Transparent → Scrolled White
+═══════════════════════════════════════ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ── Scroll progress bar ── */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7c5cbf, #e879a0, #60b8f5);
+  transition: width 0.1s linear;
+  z-index: 10;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Scrolled state ── */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255,255,255,0.8) inset;
+}
+
+/* ── Inner layout ── */
+.navInner {
+  max-width: clamp(20rem, 90vw, 80rem);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: clamp(3rem, 10vh, 4.25rem);
+  gap: 1rem;
+}
+
+/* ═══════════════════════════════════════
+   LOGO
+═══════════════════════════════════════ */
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  /* reserve consistent space so center links don't shift */
+  min-width: 0;
+}
+
+/* ── Logo image — scales cleanly across all breakpoints ── */
+.navLogoImg {
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+
+  /* Desktop default */
+  width: 450px;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: -80px;
+
+  /* Never overflow its container */
+  max-width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   NAV LINKS
+═══════════════════════════════════════ */
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navLink {
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  color: #111;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0;
+  overflow: visible;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Hover fill expand from center */
+.navLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: -1;
+}
+
+
+/* Active state */
+.navLink.active {
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.navbar.scrolled .navLink.active {
+  background: rgba(124, 92, 191, 0.1);
+  color: #7c5cbf;
+}
+
+/* ═══════════════════════════════════════
+   CTA BUTTON
+═══════════════════════════════════════ */
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.btnTalk {
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  background: black;
+  color: white;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: -0.01em;
+  transition: background 0.3s ease, transform 0.2s ease, gap 0.3s ease;
+}
+
+
+
+.btnTalk svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+
+.btnTalk:active {
+  transform: scale(0.97);
+}
+
+/* Scrolled CTA — black */
+.navbar.scrolled .btnTalk {
+  background: #111;
+  color: #fff;
+}
+
+.navbar.scrolled .btnTalk:hover {
+  background: #333;
+}
+
+
+/* ═══════════════════════════════════════
+   HAMBURGER — animated lines
+═══════════════════════════════════════ */
+
+.navHamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.navHamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, width 0.3s ease;
+  transform-origin: center;
+}
+
+.navHamburger span:nth-child(2) {
+  width: 14px;
+}
+
+
+/* Open state → X */
+.navHamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navHamburger.open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.navHamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ═══════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════ */
+
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem 1.25rem;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #111;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease, padding-left 0.3s ease;
+  animation: slideIn 0.3s ease both;
+  letter-spacing: -0.01em;
+}
+
+
+.mobileLink.active {
+  background: rgba(124, 92, 191, 0.08);
+  color: #7c5cbf;
+  font-weight: 600;
+}
+
+.mobileLinkNum {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #999;
+  letter-spacing: 0.05em;
+  min-width: 20px;
+}
+
+.mobileLink.active .mobileLinkNum {
+  color: #7c5cbf;
+}
+
+.btnTalkMobile {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+
+.btnTalkMobile:active {
+  transform: translateY(0);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — LOGO SIZES BY BREAKPOINT
+═══════════════════════════════════════ */
+
+/* Large desktop (1280px+) */
+@media (min-width: 80rem) {
+  .navLogoImg {
+    width: 380px;
+    height: 120px;
+  }
+}
+
+/* Standard desktop (800px – 1280px) */
+@media (min-width: 50rem) and (max-width: 80rem) {
+  .navLogoImg {
+    width: 320px;
+    height: 100px;
+  }
+}
+
+/* Tablet (600px – 800px) — hamburger visible, logo mid size */
+@media (min-width: 37.5rem) and (max-width: 50rem) {
+  .navLogoImg {
+    width: 110px;
+    height: 38px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navHamburger {
+    display: flex;
+  }
+
+  .btnTalk {
+    display: none;
+  }
+}
+
+/* Mobile (up to 600px) */
+@media (max-width: 37.5rem) {
+  .navLogoImg {
+    width: 200px;
+    height: 100px;
+    margin-left: -20px;
+    margin-top: 20px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navHamburger {
+    display: flex;
+  }
+
+  .btnTalk {
+    display: none;
+  }
+}
+
+/* Extra small phones (up to 360px) */
+@media (max-width: 22.5rem) {
+  .navLogoImg {
+    width: 200px;
+    height: 70px;
+  }
+}
