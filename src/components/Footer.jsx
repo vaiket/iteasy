@@ -38,7 +38,7 @@ const Footer = ({ openModal }) => {
             <ul className={styles.footerLinks}>
               <li><span>📧 hello@pixelstack.in</span></li>
               <li><span>📞 +91 98765 43210</span></li>
-              <li><span>📍 Ahmedabad, Gujarat</span></li>
+            
             </ul>
           </div>
         </div>
