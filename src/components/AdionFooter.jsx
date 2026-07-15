@@ -191,8 +191,7 @@ export default function AdionFooter() {
 
               {/* Address */}
               <div style={s.address}>
-                <p style={s.addressText}>315 Sahitya Arcade,</p>
-                <p style={s.addressText}>Ahmedabad, India</p>
+               
               </div>
 
               {/* Social buttons */}
